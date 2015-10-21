@@ -4,11 +4,23 @@ apply plugin: 'idea'
 //version = '0.1'
 
 repositories {
-    mavenCentral()
     jcenter()
 }
 
+sourceSets {
+    main.compileClasspath += configurations.provided
+    test.compileClasspath += configurations.provided
+    test.runtimeClasspath += configurations.provided
+}
+
 dependencies {
+    provided 'org.projectlombok:lombok:1.16.4'
     compile 'org.codehaus.groovy:groovy-all:2.4.5'
     testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
+}
+
+idea {
+    module {
+        scopes.PROVIDED.plus += [configurations.provided]
+    }
 }
