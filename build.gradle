@@ -7,6 +7,10 @@ repositories {
     jcenter()
 }
 
+configurations {
+    provided
+}
+
 sourceSets {
     main.compileClasspath += configurations.provided
     test.compileClasspath += configurations.provided
